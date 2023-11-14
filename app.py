@@ -6,6 +6,13 @@ import redis
 app = Flask(__name__)
 redis_client = redis.StrictRedis(host='redis-con', port=6379, db=0, decode_responses=True)
 
+# home page
+@app.route('/')
+def home():
+    return '''
+    <h3>Landing Page</h3>
+    '''
+
 #md5 Endpoint 
 @app.route('/md5/<string:string>', methods=['GET'])
 def md5_hash(string):
