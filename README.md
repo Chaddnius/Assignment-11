@@ -1,37 +1,37 @@
-# Assignment 11
+#!/bin/bash
 
-This project is a Flask API with Docker integration, allowing you to run and test various endpoints using a CLI shell.
+# Cloning the Repository and Setting up Docker on a VM
 
-## Prerequisites
+# 1. Clone the Repository:
+#    - Clone the project repository.
+#      Replace REPOSITORY_URL with the URL of your project repository.
+git clone REPOSITORY_URL
 
-- Docker: Ensure that Docker is installed on your machine or server.
+# 2. Install Docker and Docker Compose:
+#    - Update the package list.
+sudo apt-get update
 
-## Getting Started
+#    - Install Docker on the VM.
+sudo apt-get install docker.io
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/Chaddnius/Assignment-11.git
-   cd my-api-project
+#    - Install Docker Compose.
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
 
-**Build and Run Docker Containers:** 
+# 3. Build and Run the Docker Containers:
+#    - Navigate to the project directory.
+cd assignment-11
+
+#    - Build and run the Docker containers.
 docker-compose up -d
 
-**Stop and remove Docker Containers**
-docker-compose down 
+# 4. Test the API Endpoints:
+#    - Use the provided CLI shell to test the API endpoints.
+#      Example commands:
+./my_api_cli.py fibonacci 5
+./my_api_cli.py is-prime 10
+# ... and so on
 
-Run the CLI shell interactively:
-
-Copy code
-python my_api_cli.py
-Example commands in the CLI shell:
-
-Copy code
-md5 hello
-factorial 5
-fibonacci 8
-is-prime 13
-slack-alert "Hello, world!"
-keyval-create my_key my_value
-keyval-read my_key
-keyval-update my_key new_value
-keyval-delete my_key
+# 5. Cleanup (Optional):
+#    - If needed, stop and remove the Docker containers.
+docker-compose down
